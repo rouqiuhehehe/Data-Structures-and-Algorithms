@@ -1,20 +1,16 @@
-import LinkedList from './链表';
-import {
-    DoubleNode
-} from '../models/linked-list-models';
-import { 
-    defaultEquals
-} from '../util';
+import LinkedList from "./链表";
+import { DoubleNode } from "../models/linked-list-models";
+import { defaultEquals } from "../util";
 
 export default class DoubleLinkedLike<T> extends LinkedList<T> {
     protected head?: DoubleNode<T>;
     protected footer?: DoubleNode<T>;
 
-    constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
+    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
         super(equalsFn);
     }
 
-    push(element: T) {
+    public push(element: T) {
         const node = new DoubleNode(element);
         if (this.size === 0) {
             this.head = node;
@@ -24,11 +20,11 @@ export default class DoubleLinkedLike<T> extends LinkedList<T> {
             node.prev = this.footer;
             this.footer = node;
         }
-        this.count ++;
+        this.count++;
     }
 
-    insert(element: T, index: number) {
-        if(index >= 0 && index <= this.size) {
+    public insert(element: T, index: number) {
+        if (index >= 0 && index <= this.size) {
             const node = new DoubleNode(element);
             if (index === 0) {
                 // 链表为空
@@ -38,7 +34,7 @@ export default class DoubleLinkedLike<T> extends LinkedList<T> {
                     node.next = this.head;
                     this.head!.prev = node;
                     this.head = node;
-                    this.count ++;
+                    this.count++;
                 }
             } else if (index === this.size) {
                 this.push(element);
@@ -51,14 +47,14 @@ export default class DoubleLinkedLike<T> extends LinkedList<T> {
                 previous!.next!.prev = node;
                 previous.next = node;
 
-                this.count ++;
+                this.count++;
             }
-            return true
+            return true;
         }
-        return false
+        return false;
     }
 
-    removeAt(index: number) {
+    public removeAt(index: number) {
         let current = this.head;
         if (index >= 0 && index < this.size) {
             if (index === 0) {
@@ -81,34 +77,34 @@ export default class DoubleLinkedLike<T> extends LinkedList<T> {
                 current.next!.prev = current.prev;
             }
 
-            this.count --;
+            this.count--;
             return current!.element;
         }
-        return undefined
+        return undefined;
     }
 
-    getFooter() {
+    public getFooter() {
         return this.footer;
     }
 
-    clear() {
+    public clear() {
         super.clear();
         this.footer = undefined;
     }
 
-    inverseToString() {
+    public inverseToString() {
         if (this.footer === undefined) {
-            return ''
+            return "";
         }
 
-        let objString = '' + this.footer.element;
+        let objString = "" + this.footer.element;
         let previous = this.footer.prev;
 
         while (previous !== undefined) {
-            objString += (',' + previous.element);
+            objString += "," + previous.element;
             previous = previous.prev;
         }
-
+        
         return objString;
     }
 }

@@ -3,6 +3,7 @@ import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 
+/* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
 linkedlist.push(11);
 linkedlist.push(20);
@@ -45,4 +46,4 @@ doubleSortedLinkedList.insert(5);
 doubleSortedLinkedList.removeAt(1);
 
 console.log(doubleSortedLinkedList);
-
+/* tslint:enable */

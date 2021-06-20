@@ -7,17 +7,17 @@ import {
 } from '../models/linked-list-models';
 
 export default class DoubleCircularLinkedList<T> extends DoubleLinkedList<T> {
-    constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
+    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
         super(equalsFn);
     }
 
-    push(element: T) {
+    public push(element: T) {
         super.push(element);
         this.head!.prev = this.footer;
         this.footer!.next = this.head; 
     }
 
-    insert(element: T, index: number) {
+    public insert(element: T, index: number) {
         const node = new DoubleNode(element);
 
         if (index >= 0 && index <= this.size) {
@@ -41,7 +41,7 @@ export default class DoubleCircularLinkedList<T> extends DoubleLinkedList<T> {
         return false;
     }
 
-    removeAt(index: number) {
+    public removeAt(index: number) {
         if (index >= 0 && index < this.size) {
             if (index === 0) {
                 if (this.size === 1) {

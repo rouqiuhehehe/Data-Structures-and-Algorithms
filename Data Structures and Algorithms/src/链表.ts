@@ -1,19 +1,15 @@
-import { 
-    defaultEquals
-} from '../util';
-import {
-    Node
-} from '../models/linked-list-models';
+import { defaultEquals } from "../util";
+import { Node } from "../models/linked-list-models";
 
 // 链表： 每个元素由一个存储元素本身的节点和一个指向下一个元素的引用（指针）组成，增删改查时不需要移动其他元素，但是想要访问其中一个元素，则需要从起点（表头）开始找
 export default class LinkedList<T> {
-    protected count = 0;   // 链表长度
-    protected head?: Node<T>;  // 链表首项
+    protected count = 0; // 链表长度
+    protected head?: Node<T>; // 链表首项
 
-    constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {}
+    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {}
 
     // 向链表末添加元素
-    push(element: T): void {
+    public push(element: T): void {
         const node = new Node(element);
         let current;
 
@@ -23,17 +19,17 @@ export default class LinkedList<T> {
         } else {
             current = this.head;
 
-            while(current.next !== undefined) {
+            while (current.next !== undefined) {
                 current = current.next;
             }
             current.next = node;
         }
 
-        this.count ++;
+        this.count++;
     }
 
     // 下标找元素
-    getElementAt(index: number) {
+    public getElementAt(index: number) {
         if (index >= 0 && index < this.count) {
             let node = this.head;
 
@@ -48,17 +44,17 @@ export default class LinkedList<T> {
     }
 
     // 下标删元素
-    removeAt(index: number) {
+    public removeAt(index: number) {
         if (index >= 0 && index < this.count) {
-            index = Math.floor(index);
-            let current = this.head;
+            const _index = Math.floor(index);
+            const current = this.head;
 
             if (index === 0) {
                 this.head = this.head?.next;
             } else {
-                const previous = this.getElementAt(index - 1);
+                const previous = this.getElementAt(_index - 1);
                 (previous as Node<T>).next = current?.next;
-                this.count --;
+                this.count--;
                 return current?.element;
             }
 
@@ -67,7 +63,7 @@ export default class LinkedList<T> {
     }
 
     // 下标插入
-    insert(element: T, index: number) {
+    public insert(element: T, index: number) {
         const node = new Node(element);
 
         if (index >= 0 && index <= this.count) {
@@ -75,11 +71,11 @@ export default class LinkedList<T> {
                 node.next = this.head;
                 this.head = node;
             } else {
-                const previous = this.getElementAt(index - 1);
-                const current = previous?.next;
+                const previous = this.getElementAt(index - 1) as Node<T>;
+                const current = previous.next;
                 node.next = current;
-                previous!.next = node;
-                this.count ++;
+                previous.next = node;
+                this.count++;
 
                 return true;
             }
@@ -88,53 +84,53 @@ export default class LinkedList<T> {
     }
 
     // 元素找下标
-    indexOf(element: T) {
+    public indexOf(element: T) {
         let current = this.head;
 
-        for (let i = 0; i < this.count; i ++) {
-            if (this.equalsFn(element, this.getElementAt(i)!.element)) {
+        for (let i = 0; i < this.count; i++) {
+            if (this.equalsFn(element, this.getElementAt(i)?.element)) {
                 return i;
             }
-            current = current!.next;
+            current = current?.next;
         }
 
         return -1;
     }
 
     // 通过元素删除
-    remove(element: T) {
-        let index = this.indexOf(element);
+    public remove(element: T) {
+        const index = this.indexOf(element);
         return this.removeAt(index);
     }
 
-    get size() {
+    public get size() {
         return this.count;
     }
 
-    isEmpty() {
+    public isEmpty() {
         return this.size === 0;
     }
 
-    getHead() {
+    public getHead() {
         return this.head;
     }
 
-    toString() {
+    public toString() {
         if (this.head === undefined) {
-            return '';
+            return "";
         }
-        let objString = '' + this.head.element,
-            current = this.head.next;
+        let objString = "" + this.head.element;
+        let current = this.head.next;
 
-        while(current !== undefined) {
-            objString += ',' + current!.element;
-            current = current!.next
+        while (current !== undefined) {
+            objString += "," + current.element;
+            current = current.next;
         }
 
         return objString;
     }
 
-    clear() {
+    public clear() {
         this.head = undefined;
         this.count = 0;
     }
