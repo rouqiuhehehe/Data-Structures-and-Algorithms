@@ -2,6 +2,7 @@ import LinkedList from './src/链表';
 import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
+import MySet from './src/set';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -12,8 +13,8 @@ linkedlist.push(30);
 linkedlist.insert(99, 3);
 
 linkedlist.push({
-    a:1,
-    b: () => 12
+    a: 1,
+    b: () => 12,
 });
 
 // console.log(linkedlist.getElementAt(4));
@@ -38,7 +39,6 @@ doubleCircularLinkedList.removeAt(0);
 
 // console.log(doubleCircularLinkedList);
 
-
 const doubleSortedLinkedList = new DoubleSortedLinkedList();
 doubleSortedLinkedList.push(10);
 doubleSortedLinkedList.push(1);
@@ -46,4 +46,11 @@ doubleSortedLinkedList.insert(5);
 doubleSortedLinkedList.removeAt(1);
 
 console.log(doubleSortedLinkedList);
+
+const set = new MySet([1, 3]);
+const iterator = set[Symbol.iterator]();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+
 /* tslint:enable */
