@@ -19,7 +19,7 @@ export default class MySet<T> {
         }
     }
 
-    public has(element: T) {
+    public has(element: T): element is T {
         return this.items.indexOf(element) !== -1;
     }
 
@@ -47,7 +47,7 @@ export default class MySet<T> {
         return this.values();
     }
 
-    public forEach(fn: (v?: T, i?: T, self?: T[]) => void) {
+    public forEach(fn: (v: T, i: T, self: T[]) => void) {
         if (typeof fn !== 'function') {
             throw new TypeError(fn + ' is not a function');
         }
@@ -61,5 +61,63 @@ export default class MySet<T> {
         for (const item of this.items) {
             yield item;
         }
+    }
+
+    // 交集
+    public union<U>(other: MySet<U> | Iterable<U>) {
+        const _items = this.getItems<U>(other);
+
+        return [...new MySet([...this.items, ..._items])];
+    }
+
+    // 并集
+    public intersection<U>(other: MySet<U> | Iterable<U>) {
+        const _items = this.getItems<U>(other);
+        const newArr: (T | U)[] = [];
+        const bigger = _items.length > this.items.length ? _items : this.items;
+        const smaller = _items.length <= this.items.length ? _items : this.items;
+
+        for (let i = 0; i < smaller.length; i++) {
+            if (bigger.indexOf((smaller as any[])[i]) !== -1) {
+                newArr.push(smaller[i]);
+            }
+        }
+
+        return newArr;
+    }
+
+    // 差集
+    public difference<U>(other: MySet<U> | Iterable<U>) {
+        const _items = this.getItems<U>(other);
+        const newArr: (T | U)[] = [];
+
+        this.forEach((v) => {
+            if (_items.indexOf(v as any) === -1) {
+                newArr.push(v);
+            }
+        });
+
+        return newArr;
+    }
+
+    // 子集
+    public isSubsetOf<U>(other: MySet<U> | Iterable<U>) {
+        const _items = this.getItems<U>(other);
+        if (this.size > _items.length) {
+            return false;
+        }
+
+        return this.items.every((v) => _items.indexOf(v as any) !== -1);
+    }
+
+    private getItems<U>(other: MySet<U> | Iterable<U>) {
+        let _items: U[];
+        if (other instanceof MySet) {
+            _items = other.values();
+        } else {
+            _items = new MySet(other).values();
+        }
+
+        return _items;
     }
 }

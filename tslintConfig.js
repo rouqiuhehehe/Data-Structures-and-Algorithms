@@ -70,9 +70,12 @@ module.exports = {
          * @description 禁止导入有副作用（立即执行）的模块，除了 css, less, sass, scss
          * @reason 有副作用（立即执行）的模块无法控制其执行过程
          */
-        'no-import-side-effect': [true, {
-            'ignore-module': '(\\.css|\\.less|\\.sass|\\.scss)$'
-        }],
+        'no-import-side-effect': [
+            true,
+            {
+                'ignore-module': '(\\.css|\\.less|\\.sass|\\.scss)$'
+            }
+        ],
         /**
          * @category typescript-specific
          * @description 禁止给一个初始化时直接赋值为 number, string 或 boolean 的变量显式的指定类型
@@ -408,9 +411,12 @@ module.exports = {
          * @category functionality
          * @description 禁止将 this 赋值给其他变量，除非是解构赋值
          */
-        'no-this-assignment': [true, {
-            'allow-destructuring': true
-        }],
+        'no-this-assignment': [
+            true,
+            {
+                'allow-destructuring': true
+            }
+        ],
         /**
          * @category functionality
          * @description 使用实例的方法时，必须 bind 到实例上
@@ -646,10 +652,13 @@ module.exports = {
          * @has-fixer 支持自动修复
          * @prettier 可交由 prettier 控制
          */
-        'trailing-comma': [true, {
-            multiline: 'never',
-            singleline: 'never'
-        }],
+        'trailing-comma': [
+            true,
+            {
+                multiline: 'never',
+                singleline: 'never'
+            }
+        ],
         /**
          * @category style
          * @description 变量定义需要竖向对其
@@ -938,7 +947,7 @@ module.exports = {
          * @has-fixer 支持自动修复
          * @prettier 可交由 prettier 控制
          */
-        'quotemark': [true, 'single', 'jsx-double', 'avoid-template', 'avoid-escape'],
+        quotemark: [true, 'single', 'jsx-double', 'avoid-template', 'avoid-escape'],
         /**
          * @category style
          * @description 使用 return; 而不是 return undefined;
