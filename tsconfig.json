@@ -17,7 +17,8 @@
     "declaration": true,
     "declarationDir": "./dist/type",
     "lib": ["es2017", "DOM", "DOM.Iterable"],
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules", "dist"],
   "include": ["./**/src/*", "*/index.ts"]

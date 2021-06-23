@@ -1,8 +1,8 @@
-import LinkedList from './src/链表';
+import MySet from './src/set';
 import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
-import MySet from './src/set';
+import LinkedList from './src/链表';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -52,5 +52,7 @@ const iterator = set[Symbol.iterator]();
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
+
+console.log(set instanceof MySet);
 
 /* tslint:enable */

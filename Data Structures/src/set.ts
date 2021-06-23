@@ -1,4 +1,7 @@
-export default class MySet<T> {
+import 'reflect-metadata';
+
+@Reflect.metadata('name', 'MySet')
+class MySet<T> {
     public [Symbol.toStringTag] = 'MySet';
 
     private items: T[] = [];
@@ -62,4 +65,10 @@ export default class MySet<T> {
             yield item;
         }
     }
+
+    public toString() {
+        return this.items.toString();
+    }
 }
+
+export default MySet;

@@ -11,6 +11,7 @@
       // "indent": [true, "spaces", 2]
       "no-parameter-properties": false,
       "no-non-null-assertion": false,
-      "ordered-imports": false
+      "ordered-imports": false,
+      "no-import-side-effect": false
   }
 }

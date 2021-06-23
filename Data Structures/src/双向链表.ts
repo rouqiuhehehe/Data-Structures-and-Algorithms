@@ -1,6 +1,6 @@
-import LinkedList from "./链表";
-import { DoubleNode } from "../models/linked-list-models";
-import { defaultEquals } from "../util";
+import { DoubleNode } from '../models/linked-list-models';
+import { defaultEquals } from '../util';
+import LinkedList from './链表';
 
 export default class DoubleLinkedLike<T> extends LinkedList<T> {
     protected head?: DoubleNode<T>;
@@ -94,17 +94,17 @@ export default class DoubleLinkedLike<T> extends LinkedList<T> {
 
     public inverseToString() {
         if (this.footer === undefined) {
-            return "";
+            return '';
         }
 
-        let objString = "" + this.footer.element;
+        let objString = '' + this.footer.element;
         let previous = this.footer.prev;
 
         while (previous !== undefined) {
-            objString += "," + previous.element;
+            objString += ',' + previous.element;
             previous = previous.prev;
         }
-        
+
         return objString;
     }
 }
