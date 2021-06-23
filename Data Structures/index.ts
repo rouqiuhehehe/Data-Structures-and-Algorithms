@@ -14,7 +14,7 @@ linkedlist.insert(99, 3);
 
 linkedlist.push({
     a: 1,
-    b: () => 12,
+    b: () => 12
 });
 
 // console.log(linkedlist.getElementAt(4));
@@ -47,11 +47,8 @@ doubleSortedLinkedList.removeAt(1);
 
 console.log(doubleSortedLinkedList);
 
-const set = new MySet([1, 3]);
-const iterator = set[Symbol.iterator]();
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
+const set = new MySet([1, 3, 2, 5]);
+console.log(set.isSubsetOf([3, 1, 5, 4]));
 
 console.log(set instanceof MySet);
 

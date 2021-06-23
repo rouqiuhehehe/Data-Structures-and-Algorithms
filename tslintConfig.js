@@ -48,9 +48,9 @@ module.exports = {
                     'private-constructor',
                     'public-instance-method',
                     'protected-instance-method',
-                    'private-instance-method',
-                ],
-            },
+                    'private-instance-method'
+                ]
+            }
         ],
         /**
          * @category typescript-specific
@@ -73,8 +73,8 @@ module.exports = {
         'no-import-side-effect': [
             true,
             {
-                'ignore-module': '(\\.css|\\.less|\\.sass|\\.scss)$',
-            },
+                'ignore-module': '(\\.css|\\.less|\\.sass|\\.scss)$'
+            }
         ],
         /**
          * @category typescript-specific
@@ -182,15 +182,15 @@ module.exports = {
                 'index-signature': 'nospace',
                 parameter: 'nospace',
                 'property-declaration': 'nospace',
-                'variable-declaration': 'nospace',
+                'variable-declaration': 'nospace'
             },
             {
                 'call-signature': 'onespace',
                 'index-signature': 'onespace',
                 parameter: 'onespace',
                 'property-declaration': 'onespace',
-                'variable-declaration': 'onespace',
-            },
+                'variable-declaration': 'onespace'
+            }
         ],
         /**
          * @category typescript-specific
@@ -414,8 +414,8 @@ module.exports = {
         'no-this-assignment': [
             true,
             {
-                'allow-destructuring': true,
-            },
+                'allow-destructuring': true
+            }
         ],
         /**
          * @category functionality
@@ -656,8 +656,8 @@ module.exports = {
             true,
             {
                 multiline: 'never',
-                singleline: 'never',
-            },
+                singleline: 'never'
+            }
         ],
         /**
          * @category style
@@ -1013,7 +1013,7 @@ module.exports = {
             'check-type',
             'check-typecast',
             'check-type-operator',
-            'check-preblock',
-        ],
-    },
+            'check-preblock'
+        ]
+    }
 };
