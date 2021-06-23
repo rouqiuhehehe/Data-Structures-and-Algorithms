@@ -51,5 +51,6 @@ const set = new MySet([1, 3, 2, 5]);
 console.log(set.isSubsetOf([3, 1, 5, 4]));
 
 console.log(set instanceof MySet);
+console.log(Reflect.getMetadata('name', set, 'toString'));
 
 /* tslint:enable */

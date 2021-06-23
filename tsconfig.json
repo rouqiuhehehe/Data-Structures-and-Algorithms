@@ -17,6 +17,8 @@
     "declaration": true,
     "declarationDir": "./dist/type",
     "lib": ["es2017", "DOM", "DOM.Iterable"],
+    "types": ["reflect-metadata"],
+    "emitDecoratorMetadata": true,
     "downlevelIteration": true,
     "experimentalDecorators": true
   },

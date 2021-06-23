@@ -66,6 +66,7 @@ class MySet<T> {
         }
     }
 
+    @Reflect.metadata('name', 'MySet')
     public toString() {
         return this.items.toString();
     }
