@@ -70,7 +70,9 @@ hashTable.put({}, 20);
 const NULL = null;
 const hashTableSeparateChaining = new HashTableSeparateChaining<any, number>([{ key: {}, value: 10 }]);
 hashTableSeparateChaining.put(NULL, 20);
-console.log(hashTableSeparateChaining.remove(NULL), 123);
-console.log(hashTableSeparateChaining);
+hashTableSeparateChaining.put('dsc', 222);
+hashTableSeparateChaining.put('csd', 3333);
+console.log(hashTableSeparateChaining.toString());
+console.log(hashTableSeparateChaining.get('dsc'));
 
 /* tslint:enable */

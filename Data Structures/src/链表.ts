@@ -57,9 +57,11 @@ export default class LinkedList<T> {
                 this.count--;
                 return current?.element;
             }
-
-            return undefined;
+            this.count--;
+            return current?.element;
         }
+
+        return undefined;
     }
 
     // 下标插入
@@ -127,7 +129,7 @@ export default class LinkedList<T> {
             current = current.next;
         }
 
-        return objString;
+        return `[${objString}]`;
     }
 
     public clear() {
