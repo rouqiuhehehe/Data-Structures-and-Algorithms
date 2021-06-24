@@ -3,6 +3,7 @@ import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 import LinkedList from './src/链表';
+import MyMap from './src/map';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -50,7 +51,17 @@ console.log(doubleSortedLinkedList);
 const set = new MySet([1, 3, 2, 5]);
 console.log(set.isSubsetOf([3, 1, 5, 4]));
 
-console.log(set instanceof MySet);
-console.log(Reflect.getMetadata('name', set, 'toString'));
+const map = new MyMap<any, any>([
+    [{}, 1],
+    [10, 2]
+]);
+
+map.set('dsc', 3);
+map.set('dsc', 4);
+map.delete('dsc');
+
+map.forEach(console.log);
+
+console.log(map);
 
 /* tslint:enable */
