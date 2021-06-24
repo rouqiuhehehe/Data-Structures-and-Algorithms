@@ -1,9 +1,11 @@
+import HashTable from './src/hash-table';
+import HashTableSeparateChaining from './src/hash-table-separate-chaining';
+import MyMap from './src/map';
 import MySet from './src/set';
 import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 import LinkedList from './src/链表';
-import MyMap from './src/map';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -60,8 +62,15 @@ map.set('dsc', 3);
 map.set('dsc', 4);
 map.delete('dsc');
 
-map.forEach(console.log);
-
 console.log(map);
+
+const hashTable = new HashTable([{ key: {}, value: 10 }]);
+hashTable.put({}, 20);
+
+const NULL = null;
+const hashTableSeparateChaining = new HashTableSeparateChaining<any, number>([{ key: {}, value: 10 }]);
+hashTableSeparateChaining.put(NULL, 20);
+console.log(hashTableSeparateChaining.remove(NULL), 123);
+console.log(hashTableSeparateChaining);
 
 /* tslint:enable */

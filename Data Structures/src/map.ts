@@ -4,9 +4,9 @@ interface ItemsObj<T, U> {
 }
 
 export default class MyMap<T, U> {
-    private items: ItemsObj<T, U>[] = [];
-
     public [Symbol.toStringTag] = 'MyMap';
+
+    private items: ItemsObj<T, U>[] = [];
 
     public constructor(iterator?: [T, U][]) {
         if (iterator) {
