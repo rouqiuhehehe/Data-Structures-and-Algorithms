@@ -1,12 +1,12 @@
 import { DoubleNode } from '../models/linked-list-models';
-import { defaultEquals } from '../util';
+import { defaultEquals, DefaultEquals } from '../util';
 import LinkedList from './链表';
 
 export default class DoubleLinkedLike<T> extends LinkedList<T> {
     protected head?: DoubleNode<T>;
     protected footer?: DoubleNode<T>;
 
-    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
+    public constructor(protected equalsFn: DefaultEquals<T> = defaultEquals) {
         super(equalsFn);
     }
 

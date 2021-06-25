@@ -1,12 +1,11 @@
 import DoubleLinkedList from '../src/双向链表';
-import {
-    defaultEquals,
-    defaultCompare,
-    Compare,
-} from '../util';
+import { Compare, defaultCompare, DefaultCompare, defaultEquals, DefaultEquals } from '../util';
 
 export default class DoubleSortedLinkedList<T> extends DoubleLinkedList<T> {
-    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals, protected compareFn: typeof defaultCompare = defaultCompare) {
+    public constructor(
+        protected equalsFn: DefaultEquals<T> = defaultEquals,
+        protected compareFn: DefaultCompare<T> = defaultCompare
+    ) {
         super(equalsFn);
     }
 
@@ -27,7 +26,7 @@ export default class DoubleSortedLinkedList<T> extends DoubleLinkedList<T> {
     private getIndexNextSortedElement(element: T) {
         let current = this.head;
         let i = 0;
-        
+
         while (i < this.size) {
             // 找到需要插入的下标，通过两边element对比
             const comp = this.compareFn(element, current!.element);
@@ -35,7 +34,7 @@ export default class DoubleSortedLinkedList<T> extends DoubleLinkedList<T> {
                 return i;
             }
             current = current?.next;
-            i ++;
+            i++;
         }
 
         return i;

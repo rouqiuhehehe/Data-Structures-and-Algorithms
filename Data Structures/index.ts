@@ -1,3 +1,6 @@
+import HashTable from './src/hash-table';
+import HashTableSeparateChaining from './src/hash-table-separate-chaining';
+import MyMap from './src/map';
 import MySet from './src/set';
 import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
@@ -50,6 +53,26 @@ console.log(doubleSortedLinkedList);
 const set = new MySet([1, 3, 2, 5]);
 console.log(set.isSubsetOf([3, 1, 5, 4]));
 
-console.log(set instanceof MySet);
+const map = new MyMap<any, any>([
+    [{}, 1],
+    [10, 2]
+]);
+
+map.set('dsc', 3);
+map.set('dsc', 4);
+map.delete('dsc');
+
+console.log(map);
+
+const hashTable = new HashTable([{ key: {}, value: 10 }]);
+hashTable.put({}, 20);
+
+const NULL = null;
+const hashTableSeparateChaining = new HashTableSeparateChaining<any, number>([{ key: {}, value: 10 }]);
+hashTableSeparateChaining.put(NULL, 20);
+hashTableSeparateChaining.put('dsc', 222);
+hashTableSeparateChaining.put('csd', 3333);
+console.log(hashTableSeparateChaining.toString());
+console.log(hashTableSeparateChaining.get('dsc'));
 
 /* tslint:enable */

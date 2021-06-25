@@ -1,20 +1,16 @@
+import { DoubleNode } from '../models/linked-list-models';
+import { defaultEquals, DefaultEquals } from '../util';
 import DoubleLinkedList from './双向链表';
-import {
-    defaultEquals
-} from '../util';
-import {
-    DoubleNode
-} from '../models/linked-list-models';
 
 export default class DoubleCircularLinkedList<T> extends DoubleLinkedList<T> {
-    public constructor(protected equalsFn: typeof defaultEquals = defaultEquals) {
+    public constructor(protected equalsFn: DefaultEquals<T> = defaultEquals) {
         super(equalsFn);
     }
 
     public push(element: T) {
         super.push(element);
         this.head!.prev = this.footer;
-        this.footer!.next = this.head; 
+        this.footer!.next = this.head;
     }
 
     public insert(element: T, index: number) {
@@ -30,7 +26,7 @@ export default class DoubleCircularLinkedList<T> extends DoubleLinkedList<T> {
                     this.head = node;
                     this.footer!.next = node;
 
-                    this.count ++;
+                    this.count++;
                 }
             } else {
                 super.insert(element, index);
