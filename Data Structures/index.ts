@@ -6,6 +6,7 @@ import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 import LinkedList from './src/链表';
+import HashTableLinearProbing from './src/hash-table-linear-probing';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -74,5 +75,10 @@ hashTableSeparateChaining.put('dsc', 222);
 hashTableSeparateChaining.put('csd', 3333);
 console.log(hashTableSeparateChaining.toString());
 console.log(hashTableSeparateChaining.get('dsc'));
+
+const hashTableLinearProbing = new HashTableLinearProbing();
+hashTableLinearProbing.put('csd', 20);
+hashTableLinearProbing.put('dsc', 30);
+console.log(hashTableLinearProbing.toString());
 
 /* tslint:enable */

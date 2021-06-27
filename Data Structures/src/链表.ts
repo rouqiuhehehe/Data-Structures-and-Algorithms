@@ -3,6 +3,8 @@ import { defaultEquals, DefaultEquals } from '../util';
 
 // 链表： 每个元素由一个存储元素本身的节点和一个指向下一个元素的引用（指针）组成，增删改查时不需要移动其他元素，但是想要访问其中一个元素，则需要从起点（表头）开始找
 export default class LinkedList<T> {
+    public static hibbo = 'dsc';
+
     protected count = 0; // 链表长度
     protected head?: Node<T>; // 链表首项
 
