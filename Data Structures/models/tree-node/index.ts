@@ -8,8 +8,3 @@ export class TreeNode<T> {
         `;
     }
 }
-
-// tslint:disable-next-line:no-magic-numbers
-const treeNode = new TreeNode<number>(10000, 50000, 210);
-
-console.log(treeNode.toString());
