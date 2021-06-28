@@ -7,6 +7,7 @@ import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 import LinkedList from './src/链表';
 import HashTableLinearProbing from './src/hash-table-linear-probing';
+import BinarySearchTree from './src/binary-search-tree';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -73,12 +74,16 @@ const hashTableSeparateChaining = new HashTableSeparateChaining<any, number>([{ 
 hashTableSeparateChaining.put(NULL, 20);
 hashTableSeparateChaining.put('dsc', 222);
 hashTableSeparateChaining.put('csd', 3333);
-console.log(hashTableSeparateChaining.toString());
-console.log(hashTableSeparateChaining.get('dsc'));
+// console.log(hashTableSeparateChaining.toString());
+// console.log(hashTableSeparateChaining.get('dsc'));
 
 const hashTableLinearProbing = new HashTableLinearProbing();
 hashTableLinearProbing.put('csd', 20);
 hashTableLinearProbing.put('dsc', 30);
-console.log(hashTableLinearProbing.toString());
+// console.log(hashTableLinearProbing.toString());
+
+const binarySearchTree = new BinarySearchTree([1, 2, 11, 3, 6, 8, 4, 'ddddddddddd']);
+console.log(binarySearchTree.remove(4), 123);
+console.log(binarySearchTree.inOrderTraverse(console.log));
 
 /* tslint:enable */

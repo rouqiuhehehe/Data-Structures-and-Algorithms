@@ -1,5 +1,5 @@
 export class TreeNode<T> {
-    public constructor(public node: T, public left?: T, public right?: T) {}
+    public constructor(public node: T, public left?: TreeNode<T>, public right?: TreeNode<T>) {}
 
     public toString() {
         return `             ${this.node}
