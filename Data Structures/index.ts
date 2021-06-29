@@ -82,8 +82,10 @@ hashTableLinearProbing.put('csd', 20);
 hashTableLinearProbing.put('dsc', 30);
 // console.log(hashTableLinearProbing.toString());
 
-const binarySearchTree = new BinarySearchTree([1, 2, 11, 3, 6, 8, 4, 'ddddddddddd']);
-console.log(binarySearchTree.remove(4), 123);
-console.log(binarySearchTree.inOrderTraverse(console.log));
+const binarySearchTree = new BinarySearchTree([1, 2, 11, 3, 6, 5, 8, 10, 4, 'ddddddddddd']);
+binarySearchTree.remove(6);
+binarySearchTree.insert('ccc');
+console.log(binarySearchTree.toString());
+// binarySearchTree.inOrderTraverse(console.log);
 
 /* tslint:enable */

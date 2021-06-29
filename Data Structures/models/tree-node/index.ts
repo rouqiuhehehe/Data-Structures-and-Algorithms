@@ -1,10 +1,10 @@
 export class TreeNode<T> {
-    public constructor(public node: T, public left?: TreeNode<T>, public right?: TreeNode<T>) {}
+    public left?: TreeNode<T>;
+    public right?: TreeNode<T>;
+
+    public constructor(public node: T, public height = 0) {}
 
     public toString() {
-        return `             ${this.node}
-            /   \\
-           ${this.left}   ${this.right}
-        `;
+        return `${this.height} => ${this.node}`;
     }
 }

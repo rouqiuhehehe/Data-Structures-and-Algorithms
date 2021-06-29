@@ -12,7 +12,7 @@ export const enum HashNum {
     DJB2DEFAULTHASHREMAINDERBASENUM = 1013
 }
 
-export default abstract class HashTableCon<K, V, T extends Object> {
+export default abstract class HashTableCon<K, V, T extends Record<string, any>> {
     protected items: Record<string, T> = {};
 
     protected constructor(dataArray?: DataObject<K, V>[], protected toStrFn: DefaultToString = defaultToString) {
