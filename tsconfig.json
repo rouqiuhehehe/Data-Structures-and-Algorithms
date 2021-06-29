@@ -1,11 +1,13 @@
 {
     "compilerOptions": {
+        // "module": "esnext",
+        // "target": "esnext",
         "module": "commonjs",
+        "target": "ES5",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "target": "ES5",
         "diagnostics": true,
         "outDir": "./dist",
         "strict": true,
@@ -20,7 +22,8 @@
         "types": ["reflect-metadata"],
         "emitDecoratorMetadata": true,
         "downlevelIteration": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "moduleResolution": "Node"
     },
     "exclude": ["node_modules", "dist"],
     "include": ["./"]

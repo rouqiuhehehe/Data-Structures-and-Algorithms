@@ -20,7 +20,7 @@ export default class HashTableSeparateChaining<K, V> extends HashTableCon<K, V, 
 
     public remove(key: K) {
         const item = this.items[this.hashCode(key)];
-        if (item && item.remove({ key } as any)) {
+        if (item && item.remove({ key })) {
             return true;
         }
         return false;

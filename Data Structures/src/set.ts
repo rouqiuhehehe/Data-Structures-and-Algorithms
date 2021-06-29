@@ -72,22 +72,22 @@ class MySet<T> {
     }
 
     // 交集
-    public union<U>(other: MySet<U> | Iterable<U>) {
+    public union<U extends T>(other: MySet<U> | Iterable<U>) {
         const _items = this.getItems<U>(other);
 
         return [...new MySet([...this.items, ..._items])];
     }
 
     // 并集
-    public intersection<U>(other: MySet<U> | Iterable<U>) {
+    public intersection<U extends T>(other: MySet<U> | Iterable<U>) {
         const _items = this.getItems<U>(other);
-        const newArr: (T | U)[] = [];
+        const newArr: T[] = [];
         const bigger = _items.length > this.items.length ? _items : this.items;
         const smaller = _items.length <= this.items.length ? _items : this.items;
 
-        for (let i = 0; i < smaller.length; i++) {
-            if (bigger.indexOf((smaller as any[])[i]) !== -1) {
-                newArr.push(smaller[i]);
+        for (const item of smaller) {
+            if (bigger.indexOf(item) !== -1) {
+                newArr.push(item);
             }
         }
 
@@ -95,12 +95,12 @@ class MySet<T> {
     }
 
     // 差集
-    public difference<U>(other: MySet<U> | Iterable<U>) {
+    public difference<U extends T>(other: MySet<U> | Iterable<U>) {
         const _items = this.getItems<U>(other);
-        const newArr: (T | U)[] = [];
+        const newArr: T[] = [];
 
-        this.forEach((v) => {
-            if (_items.indexOf(v as any) === -1) {
+        _items.forEach((v) => {
+            if (this.items.indexOf(v) === -1) {
                 newArr.push(v);
             }
         });
@@ -109,13 +109,13 @@ class MySet<T> {
     }
 
     // 子集
-    public isSubsetOf<U>(other: MySet<U> | Iterable<U>) {
+    public isSubsetOf<U extends T>(other: MySet<U> | Iterable<U>) {
         const _items = this.getItems<U>(other);
         if (this.size > _items.length) {
             return false;
         }
 
-        return this.items.every((v) => _items.indexOf(v as any) !== -1);
+        return _items.every((v) => this.items.indexOf(v) !== -1);
     }
 
     private getItems<U>(other: MySet<U> | Iterable<U>) {

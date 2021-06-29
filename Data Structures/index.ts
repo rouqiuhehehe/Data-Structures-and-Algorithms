@@ -1,4 +1,6 @@
+import BinarySearchTree from './src/binary-search-tree';
 import HashTable from './src/hash-table';
+import HashTableLinearProbing from './src/hash-table-linear-probing';
 import HashTableSeparateChaining from './src/hash-table-separate-chaining';
 import MyMap from './src/map';
 import MySet from './src/set';
@@ -6,8 +8,6 @@ import DoubleLinkedList from './src/双向链表';
 import DoubleCircularLinkedList from './src/循环双向链表';
 import DoubleSortedLinkedList from './src/有序双向链表';
 import LinkedList from './src/链表';
-import HashTableLinearProbing from './src/hash-table-linear-probing';
-import BinarySearchTree from './src/binary-search-tree';
 
 /* tslint:disable:no-magic-numbers */
 const linkedlist = new LinkedList();
@@ -53,7 +53,7 @@ doubleSortedLinkedList.removeAt(1);
 console.log(doubleSortedLinkedList);
 
 const set = new MySet([1, 3, 2, 5]);
-console.log(set.isSubsetOf([3, 1, 5, 4]));
+console.log(set.difference([3, 1, 2, 5, 4]), 777);
 
 const map = new MyMap<any, any>([
     [{}, 1],
