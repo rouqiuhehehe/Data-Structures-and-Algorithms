@@ -6,12 +6,6 @@ import { DefaultToString, defaultToString } from '../util';
 export default class HashTable<K, V> extends HashTableCon<K, V, ValuePair<K, V>> {
     public constructor(dataArray?: DataObject<K, V>[], protected toStrFn: DefaultToString = defaultToString) {
         super(dataArray, toStrFn);
-        if (dataArray) {
-            for (const item of dataArray) {
-                const { key, value } = item;
-                this.put(key, value);
-            }
-        }
     }
 
     public put(key: K, value: V) {

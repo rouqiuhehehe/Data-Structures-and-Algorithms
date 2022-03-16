@@ -1,4 +1,7 @@
+import AVITree from './src/adelson-velskii-landi-tree';
+import BinarySearchTree from './src/binary-search-tree';
 import HashTable from './src/hash-table';
+import HashTableLinearProbing from './src/hash-table-linear-probing';
 import HashTableSeparateChaining from './src/hash-table-separate-chaining';
 import MyMap from './src/map';
 import MySet from './src/set';
@@ -48,10 +51,10 @@ doubleSortedLinkedList.push(1);
 doubleSortedLinkedList.insert(5);
 doubleSortedLinkedList.removeAt(1);
 
-console.log(doubleSortedLinkedList);
+// console.log(doubleSortedLinkedList);
 
 const set = new MySet([1, 3, 2, 5]);
-console.log(set.isSubsetOf([3, 1, 5, 4]));
+// console.log(set.difference([3, 1, 2, 5, 4]), 777);
 
 const map = new MyMap<any, any>([
     [{}, 1],
@@ -62,7 +65,7 @@ map.set('dsc', 3);
 map.set('dsc', 4);
 map.delete('dsc');
 
-console.log(map);
+// console.log(map);
 
 const hashTable = new HashTable([{ key: {}, value: 10 }]);
 hashTable.put({}, 20);
@@ -72,7 +75,22 @@ const hashTableSeparateChaining = new HashTableSeparateChaining<any, number>([{ 
 hashTableSeparateChaining.put(NULL, 20);
 hashTableSeparateChaining.put('dsc', 222);
 hashTableSeparateChaining.put('csd', 3333);
-console.log(hashTableSeparateChaining.toString());
-console.log(hashTableSeparateChaining.get('dsc'));
+// console.log(hashTableSeparateChaining.toString());
+// console.log(hashTableSeparateChaining.get('dsc'));
+
+const hashTableLinearProbing = new HashTableLinearProbing();
+hashTableLinearProbing.put('csd', 20);
+hashTableLinearProbing.put('dsc', 30);
+// console.log(hashTableLinearProbing.toString());
+
+const binarySearchTree = new BinarySearchTree([1, 2, 11, 3, 6, 5, 8, 10, 4, 'ddddddddddd']);
+binarySearchTree.remove(6);
+binarySearchTree.insert('ccc');
+// console.log(binarySearchTree.toString());
+// binarySearchTree.inOrderTraverse(console.log);
+
+const aviTree = new AVITree([1, 2, 11, 3, 6, 5, 8, 10, 4, 'ddddddddddd']);
+aviTree.remove(6);
+console.log(aviTree.inOrderTraverse(console.log));
 
 /* tslint:enable */

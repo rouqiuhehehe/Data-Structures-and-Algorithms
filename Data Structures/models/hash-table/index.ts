@@ -1,13 +1,19 @@
 import { DefaultToString, defaultToString } from '../../util';
+import { ValuePair } from '../value-pair';
 export interface DataObject<K, V> {
     key: K;
     value: V;
 }
 
-export default abstract class HashTableCon<K, V, T> {
-    protected items: Record<string, T> = {};
+export const enum HashNum {
+    LOSELOSEDEFAULTHASHBASENUM = 37,
+    DJB2DEFAULTHASHBASENUM = 5381,
+    DJB2DEFAULTHASHMULTIPLYBASENUM = 33,
+    DJB2DEFAULTHASHREMAINDERBASENUM = 1013
+}
 
-    private readonly DEFAULTHASHBASENUM = 37;
+export default abstract class HashTableCon<K, V, T extends Record<string, any>> {
+    protected items: Record<string, T> = {};
 
     protected constructor(dataArray?: DataObject<K, V>[], protected toStrFn: DefaultToString = defaultToString) {
         if (dataArray) {
@@ -24,10 +30,23 @@ export default abstract class HashTableCon<K, V, T> {
 
     public abstract get(key: K): V | undefined;
 
-    public abstract toString(): string;
+    public toString() {
+        if (this.size === 0) {
+            return '';
+        }
+        const keys = Object.keys(this.items);
+        let objStr = `${keys[0]} => ${this.items[keys[0]].toString()}`;
+
+        for (let i = 1; i < keys.length; i++) {
+            objStr += `,\n${keys[i]} => ${this.items[keys[i]].toString()}`;
+        }
+
+        return objStr;
+    }
 
     public hashCode(key: K) {
         return this.loseloseHashCode(key);
+        // return this.djb2HashCode(key);
     }
 
     public getTable() {
@@ -53,6 +72,17 @@ export default abstract class HashTableCon<K, V, T> {
             hash += item.charCodeAt(0);
         }
 
-        return (hash % this.DEFAULTHASHBASENUM).toString();
+        return (hash % HashNum.LOSELOSEDEFAULTHASHBASENUM).toString();
+    }
+
+    private djb2HashCode(key: K) {
+        const tableKey = this.toStrFn(key);
+        let hash = HashNum.DJB2DEFAULTHASHBASENUM;
+
+        for (let i = 0; i < tableKey.length; i++) {
+            hash *= HashNum.DJB2DEFAULTHASHMULTIPLYBASENUM + tableKey.charCodeAt(i);
+        }
+
+        return (hash % HashNum.DJB2DEFAULTHASHREMAINDERBASENUM).toString();
     }
 }

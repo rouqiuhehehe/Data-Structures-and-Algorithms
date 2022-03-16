@@ -20,7 +20,7 @@ export default class HashTableSeparateChaining<K, V> extends HashTableCon<K, V, 
 
     public remove(key: K) {
         const item = this.items[this.hashCode(key)];
-        if (item && item.remove({ key } as any)) {
+        if (item && item.remove(new ValuePair(key))) {
             return true;
         }
         return false;
@@ -29,27 +29,13 @@ export default class HashTableSeparateChaining<K, V> extends HashTableCon<K, V, 
     public get(key: K) {
         const item = this.items[this.hashCode(key)];
         if (item) {
-            const index = item.indexOf({ key } as any);
+            const index = item.indexOf(new ValuePair(key));
             return index === -1 ? undefined : item.getElementAt(index)?.element.value;
         }
         return undefined;
     }
 
-    public toString() {
-        if (this.size === 0) {
-            return '';
-        }
-        const keys = Object.keys(this.items);
-        let objStr = `${keys[0]} => ${this.items[keys[0]].toString()}`;
-
-        for (let i = 1; i < keys.length; i++) {
-            objStr += `,\n${keys[i]} => ${this.items[keys[i]].toString()}`;
-        }
-
-        return objStr;
-    }
-
-    private linkedListEquals(a: DataObject<K, V>, b: DataObject<K, V>) {
+    private linkedListEquals(a: ValuePair<K, V>, b: ValuePair<K, V>) {
         if (typeof a.key === 'number' && a.key === 0 && typeof b.key === 'number' && b.key === 0) {
             return true;
         }
